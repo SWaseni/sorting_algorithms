@@ -9,9 +9,9 @@ void swap_ints(int *a, int *b)
 {
 	int temp;
 
-	temp = *a;
+	tmp = *a;
 	*a = *b;
-	*b = temp;
+	*b = tmp;
 }
 
 /**
@@ -23,20 +23,24 @@ void swap_ints(int *a, int *b)
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, j;
+	size_t i, len = size;
+	bool bubbly = false;
 
-	if (!array)
+	if (array == NULL || size < 2)
 		return;
 
-	for (; i < size - 1; i++)
+	while (bubbly == false)
 	{
-		for (; j < size - j - 1; j++)
+		bubbly = true;
+		for (i = 0; i < len - 1; i++)
 		{
-			if (array[j] > array[j + 1])
+			if (array[i] > array[i + 1])
 			{
-				swap_ints(&array[j], &array[j + 1]);
+				swap_ints(array + i, array + i + 1);
 				print_array(array, size);
+				bubbly = false;
 			}
 		}
+		len--;
 	}
 }
